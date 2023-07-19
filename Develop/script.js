@@ -1,5 +1,8 @@
 // Assignment code here
+// create a function for generatePasswoed()
 function generatePassword() {
+
+  // Create arrays for each criteria
   var result = "";
   const lower = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
   const upper = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
@@ -7,6 +10,7 @@ function generatePassword() {
   const special = [" ","!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","\\","]","^","_","`","{","|","}","~"];
   var charCode = [];
 
+  //Prompts user for criteria and Loops to put correct options in prompt
   do {
     var pwLength = prompt("How many characters would you like your passwoed to be? (8-128)");
   } while (pwLength < 8 || pwLength > 128 || /^\d+$/.test(pwLength) == false);
@@ -23,6 +27,7 @@ function generatePassword() {
     var pwSpecialChar = prompt("Would you like your password to contain special characters? (Y/N)");
   } while (pwSpecialChar != "Y" && pwSpecialChar != "y" && pwSpecialChar != "N" && pwSpecialChar != "n");
 
+  // Adds arrays to one array if user prompts console to do so.
   if (pwLower == "Y" || pwLower == "y") {
     charCode = charCode.concat(lower);
   }
@@ -36,11 +41,12 @@ function generatePassword() {
     charCode = charCode.concat(special);
   }
   
+  //Generate a character from the charCode array for the length of the password the user desires.
   for(let i = 0; i < pwLength; i++) {
     result += charCode[Math.floor(Math.random() * charCode.length)];
   }
-  console.log(result);
 
+  // reture password
   return result;
 }
 
